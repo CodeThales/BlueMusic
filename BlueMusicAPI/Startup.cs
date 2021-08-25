@@ -37,6 +37,8 @@ namespace BlueMusicAPI
             services.AddTransient<MusicStaticService>();
 
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<BlueMusicContext>();
+
+            services.AddTransient<IAuthService, AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
