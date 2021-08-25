@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Linq;
 
 namespace BlueMusicAPI.Data
@@ -10,7 +9,8 @@ namespace BlueMusicAPI.Data
     public static class SeedDatabase
     {
         public static void Initialize(IHost app)
-        {
+        {        
+
             using (var scope = app.Services.CreateScope())
             {
                 var serviceProvider = scope.ServiceProvider;
@@ -24,7 +24,6 @@ namespace BlueMusicAPI.Data
                     context.Music.Add(new Music { Name = "Smells Like Teen Spirity", Author = "Nirvana", Duration = 240, Link = "" });
                     context.Music.Add(new Music { Name = "Sultans Of Swings", Author = "Dire Straits", Duration = 210, Link = "" });
                     context.Music.Add(new Music { Name = "Nothing Else Matter", Author = "Metalica", Duration = 0, Link = "" });
-
                 }
 
                 context.SaveChanges();

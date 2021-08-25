@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BlueMusicAPI.Models;
 using BlueMusicAPI.Services;
+using System;
 
 namespace BlueMusicAPI.Controllers
 {
@@ -9,6 +10,7 @@ namespace BlueMusicAPI.Controllers
     public class MusicController : ApiBaseController
     {
         IMusicService _service;
+        //IMusicService _staticService;
 
         public MusicController(IMusicService service)
         {
@@ -24,6 +26,16 @@ namespace BlueMusicAPI.Controllers
             _service.Get(id) == null ?
             ApiNotFound("Música não encontrada.") :
             ApiOk(_service.Get(id));
+
+
+        [Route("random")]
+        [HttpGet]
+        public IActionResult Random() 
+        {
+            var lista = _service.All();
+            Random rand = new();          
+            return ApiOk(lista[rand.Next(lista.Count)]);
+        }            
 
 
         [HttpPost]
