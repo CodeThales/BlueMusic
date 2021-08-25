@@ -9,7 +9,7 @@ namespace BlueMusicAPI.Services
     {
         public List<Music> All()
         {
-            //List<Music> listaMusic = new();
+            List<Music> listaMusic = new();
 
             //string[] Names = new string[] { "Transparent Soul”", "Best Friend", "Yonaguni", "Miénteme", "Higher Power", "Astronaut In The Ocean", "Leave Before You Love Me", "Count On Me", "Your Power", "Solar Power" };
             //string[] Authors = new string[] { "Willow e Travis Barker", "Saweetie e Doja Cat", "Bad Bunny", "TINI e Maria Becerra", " Coldplay", "Masked Wolf", "Marshmello e Jonas Brothers", "Brockhampton", "Billie Eilish", "Lorde" };
@@ -22,7 +22,7 @@ namespace BlueMusicAPI.Services
 
             //listaMusic.Add(new Music { Name = "Aways", Author = "Bon Jovi", Duration = 180, Link = "" });
 
-            //return listaMusic;
+            return listaMusic;
         }
 
         public bool Create(Music m)

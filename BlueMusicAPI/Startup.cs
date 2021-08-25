@@ -2,6 +2,7 @@ using BlueMusicAPI.Data;
 using BlueMusicAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,8 @@ namespace BlueMusicAPI
 
             services.AddTransient<IMusicService, MusicService>();
             services.AddTransient<MusicStaticService>();
+
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<BlueMusicContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
