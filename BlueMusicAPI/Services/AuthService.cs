@@ -19,7 +19,7 @@ namespace BlueMusicAPI.Services
 
         public async Task<SignInResult> GetUser(IdentityUser identityUser)
         {
-            var user = await _userManager.FindByEmailAsync(identityUser.Email);
+            var user = await _userManager.FindByNameAsync(identityUser.Email);
             var result = await _signInManager.CheckPasswordSignInAsync(user, identityUser.PasswordHash, false);
             return result;
         }
