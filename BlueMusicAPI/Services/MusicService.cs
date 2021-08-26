@@ -27,7 +27,7 @@ namespace BlueMusicAPI.Services
         }
 
         public bool Create(Music m)
-        {
+        {            
             try
             {
                 _context.Add(m);

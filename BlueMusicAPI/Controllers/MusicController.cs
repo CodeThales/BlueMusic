@@ -41,17 +41,21 @@ namespace BlueMusicAPI.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Create([FromBody] Music music) =>
-            _service.Create(music) ?
-            ApiOk("Música inserida com sucesso.") :
-            ApiNotFound("Erro ao inserir música.");
+        public IActionResult Create([FromBody] Music music)
+        {
+            var user = User.Identity.Name;
+            music.CreatedBy = user;
+            return _service.Create(music) ? ApiOk("Música inserida com sucesso.") : ApiNotFound("Erro ao inserir música.");
+        }
 
         [Authorize]
         [HttpPut]
-        public IActionResult Update([FromBody] Music music) =>
-            _service.Update(music) ?
-            ApiOk("Música atualizada com sucesso.") :
-            ApiNotFound("Erro ao atualizar música.");
+        public IActionResult Update([FromBody] Music music)
+        {
+            var user = User.Identity.Name;
+            music.UpdatedBy = user;
+            return _service.Update(music) ? ApiOk("Música atualizada com sucesso.") : ApiNotFound("Erro ao atualizar música.");
+        }
 
         [Authorize]
         [Route("{id}")]
