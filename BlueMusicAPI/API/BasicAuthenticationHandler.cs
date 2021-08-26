@@ -45,7 +45,7 @@ namespace BlueMusicAPI.API
                 return AuthenticateResult.Fail($"Authentication failed: {ex.Message}");
             }
 
-            var claims = new[] { new Claim(ClaimTypes.Email, email) };
+            var claims = new[] { new Claim(ClaimTypes.Name, email) };
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
