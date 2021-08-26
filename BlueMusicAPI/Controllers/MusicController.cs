@@ -2,6 +2,7 @@
 using BlueMusicAPI.Models;
 using BlueMusicAPI.Services;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BlueMusicAPI.Controllers
 {
