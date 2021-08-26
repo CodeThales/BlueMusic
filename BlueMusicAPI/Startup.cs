@@ -1,5 +1,7 @@
+using BlueMusicAPI.API;
 using BlueMusicAPI.Data;
 using BlueMusicAPI.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -39,6 +41,9 @@ namespace BlueMusicAPI
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<BlueMusicContext>();
 
             services.AddTransient<IAuthService, AuthService>();
+
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +60,7 @@ namespace BlueMusicAPI
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

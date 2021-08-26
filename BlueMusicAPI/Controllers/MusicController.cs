@@ -5,6 +5,7 @@ using System;
 
 namespace BlueMusicAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class MusicController : ApiBaseController
