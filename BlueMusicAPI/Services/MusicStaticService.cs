@@ -50,7 +50,17 @@ namespace BlueMusicAPI.Services
 
         public bool Update(Music m)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Music> musicList = All();
+                Music updatedMusic = musicList.Find(music => music == m);
+                m = updatedMusic;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool Delete(int? id)
