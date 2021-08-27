@@ -1,7 +1,7 @@
 ﻿using BlueMusicAPI.Models;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace BlueMusicAPI.Services
 {
@@ -30,20 +30,30 @@ namespace BlueMusicAPI.Services
 
         public bool Create(Music m)
         {
+            try
+            {
+                List<Music> musicList = All();
+                m.Id = musicList.Count() + 1;
+                musicList.Add(m);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }        
+
+        public Music Get(int? id)
+        {
+            return All().FirstOrDefault(m => m.Id == id);
+        }
+
+        public bool Update(Music m)
+        {
             throw new NotImplementedException();
         }
 
         public bool Delete(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Music Get(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(Music m)
         {
             throw new NotImplementedException();
         }
