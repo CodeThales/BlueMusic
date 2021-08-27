@@ -53,7 +53,7 @@ namespace BlueMusicAPI.Services
             try
             {
                 List<Music> musicList = All();
-                Music updatedMusic = musicList.Find(music => music == m);
+                Music updatedMusic = musicList.Find(music => music.Id == m.Id);
                 m = updatedMusic;
                 return true;
             }
@@ -65,7 +65,17 @@ namespace BlueMusicAPI.Services
 
         public bool Delete(int? id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Music> musicList = All();
+                Music deletedMusic = musicList.FirstOrDefault(m => m.Id == id);
+                musicList.Remove(deletedMusic);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
